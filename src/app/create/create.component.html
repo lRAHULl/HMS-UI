@@ -1,0 +1,66 @@
+<p>{{ user | json }}</p>
+<div class="my-form" *ngIf="role === 'doctor'">
+    <h1>Create Doctor</h1>
+    <hr>
+    <form>
+        <div class="row">
+            <div class="col-6">
+                <label for="username">Username</label>
+                <input type="text" id="username" [(ngModel)]="user.username" name="username" class="my-form-input form-control">
+                <label for="password">password</label>
+                <input type="password" id="password" [(ngModel)]="user.password" name="password" class="my-form-input form-control">
+                <label for="firstName">firstName</label>
+                <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" class="my-form-input form-control">
+                <label for="lastName">lastName</label>
+                <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" class="my-form-input form-control">
+                <label for="age">age</label>
+                <input type="number" id="age" [(ngModel)]="user.age" name="age" class="my-form-input form-control">
+            </div>
+            <div class="col-6">
+                <label for="doctorSpecialisation">doctorSpecialisation</label>
+                <input type="text" id="doctorSpecialisation" [(ngModel)]="user.doctorSpecialisation" name="doctorSpecialisation" class="my-form-input form-control">
+                <label for="experience">experience</label>
+                <input type="number" id="experience" [(ngModel)]="user.experience" name="experience" class="my-form-input form-control">
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" (click)="createDoctor()">Create Doctor</button>
+    </form>
+</div>
+
+<div class="my-form" *ngIf="role === 'patient'">
+    <h1>Create Patient</h1>
+    <hr>
+    <form>
+        <div class="row">
+            <div class="col-6">
+                <label for="username">Username</label>
+                <input type="text" id="username" [(ngModel)]="user.username" name="username" class="my-form-input form-control">
+                <label for="password">password</label>
+                <input type="password" id="password" [(ngModel)]="user.password" name="password" class="my-form-input form-control">
+                <label for="firstName">firstName</label>
+                <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" class="my-form-input form-control">
+                <label for="lastName">lastName</label>
+                <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" class="my-form-input form-control">
+                <label for="age">age</label>
+                <input type="number" id="age" [(ngModel)]="user.age" name="age" class="my-form-input form-control">
+            </div>
+            <div class="col-6">
+                <label for="patientHeight">patientHeight</label>
+                <input type="number" id="patientHeight" [(ngModel)]="user.patientHeight" name="patientHeight" class="my-form-input form-control">
+                <label for="patientWeight">patientWeight</label>
+                <input type="number" id="patientWeight" [(ngModel)]="user.patientWeight" name="patientWeight" class="my-form-input form-control">
+                <label for="street">street</label>
+                <input type="text" id="street" [(ngModel)]="user.street" name="street" class="my-form-input form-control">
+                <label for="city">city</label>
+                <input type="text" id="city" [(ngModel)]="user.city" name="city" class="my-form-input form-control">
+                <label for="doorNo">doorNo</label>
+                <input type="text" id="doorNo" [(ngModel)]="user.doorNo" name="doorNo" class="my-form-input form-control">
+                <label for="bloodGroup">bloodGroup</label>
+                <input type="text" id="bloodGroup" [(ngModel)]="user.bloodGroup" name="bloodGroup" class="my-form-input form-control">
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" (click)="createPatient()">Create Patient</button>
+    </form>
+</div>
+
+{{ res | json }}

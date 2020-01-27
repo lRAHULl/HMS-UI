@@ -1,0 +1,67 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "pkUserId": 48,
+            "fkRoleId": 2,
+            "username": "steve",
+            "password": "strong",
+            "firstName": "steven",
+            "lastName": "strange",
+            "age": 19,
+            "pkDoctorId": 6,
+            "experience": 100,
+            "doctorSpecialisation": "MBBS",
+            "patients": [
+                {
+                    "pkUserId": 46,
+                    "fkRoleId": 1,
+                    "username": "rock",
+                    "password": "reigns",
+                    "firstName": "roman",
+                    "lastName": "reigns",
+                    "age": 16,
+                    "pkPatientId": 14,
+                    "patientHeight": 190,
+                    "patientWeight": 120,
+                    "street": "22nd",
+                    "city": null,
+                    "doorNo": "16",
+                    "bloodGroup": "A+"
+                },
+                {
+                    "pkUserId": 49,
+                    "fkRoleId": 1,
+                    "username": "billnye",
+                    "password": "billyyye",
+                    "firstName": "Bill",
+                    "lastName": "Nye",
+                    "age": 50,
+                    "pkPatientId": 15,
+                    "patientHeight": 190,
+                    "patientWeight": 129,
+                    "street": "22nd",
+                    "city": null,
+                    "doorNo": "16",
+                    "bloodGroup": "A+"
+                },
+                {
+                    "pkUserId": 51,
+                    "fkRoleId": 1,
+                    "username": "billnye1",
+                    "password": "billnye",
+                    "firstName": "Bill",
+                    "lastName": "Nye",
+                    "age": 16,
+                    "pkPatientId": 16,
+                    "patientHeight": 190,
+                    "patientWeight": 120,
+                    "street": "22nd",
+                    "city": null,
+                    "doorNo": "16",
+                    "bloodGroup": "A+"
+                }
+            ]
+        }
+    ]
+}

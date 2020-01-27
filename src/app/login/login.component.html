@@ -1,0 +1,39 @@
+<!-- <div  class="d-flex justify-content-center">
+
+
+    <form>
+        <h1 class="d-flex justify-content-center">Login</h1>
+        <div class="form-group">
+            <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        
+        <button type="submit" (click)="login()" class="btn btn-success d-flex justify-content-center">Login</button>
+    </form>
+</div> -->
+
+
+<h3 class="login">Log In</h3>
+<!-- 
+<div class="my-form">
+    <form  (ngSubmit)="login()">
+        <label for="username">Username</label>
+        <input type="text" ngModel id="username" name="username" #usernameInput="ngModel" class="my-form-input form-control" placeholder="Username" required>
+        <label for="password">Password</label>
+        <input type="password" ngModel id="password" name="password" #passwordInput="ngModel" class="my-form-input form-control" placeholder="Password" required>
+   
+        <button type="submit" class="btn btn-success my-form-button">Login</button>
+    </form>
+</div> -->
+
+<div class="my-form">
+    <form>
+        <input type="text" [(ngModel)]="username" name="username" class="my-form-input form-control" placeholder="Username" required>
+
+        <input type="password" [(ngModel)]="password" name="password" class="my-form-input form-control" placeholder="Password" required>
+   
+        <button type="submit" (click)="login()" class="btn btn-success my-form-button">Login</button>
+    </form>
+</div>

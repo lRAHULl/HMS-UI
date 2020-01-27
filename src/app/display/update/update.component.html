@@ -1,0 +1,47 @@
+<form style="text-align: center;">
+  <br>
+  <div class="form-group">
+    <label>
+      Username <input type="text" name="username" [(ngModel)]="user.username" class="form-control" disabled>
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      Password <input type="text" name="password" [(ngModel)]="user.password" class="form-control">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>
+      Age <input type="number" name="age" [(ngModel)]="user.age" class="form-control">
+    </label>
+  </div>
+  <div *ngIf="user.fkRoleId === 2">
+    <div class="form-group">
+      <label>
+        Specialisation <input type="text" name="specialisation" [(ngModel)]="user.doctorSpecialisation"
+          class="form-control">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        Experience <input type="number" name="experience" [(ngModel)]="user.experience" class="form-control">
+      </label>
+    </div>
+    <button (click)="updateDoctor()" class="btn btn-primary">Update</button>
+  </div>
+  <div *ngIf="user.fkRoleId === 1">
+    <div class="form-group">
+      <label>
+        Height <input type="number" name="patientHeight" [(ngModel)]="user.patientHeight" class="form-control">
+      </label>
+    </div>
+    <div class="form-group">
+      <label>
+        Weight <input type="number" name="patientWeight" [(ngModel)]="user.patientWeight" class="form-control">
+      </label>
+    </div>
+    <button (click)="updatePatient()" class="btn btn-primary">Update</button>
+  </div>
+
+  <p *ngIf="res !== null">{{ res | json }}</p>
+</form>

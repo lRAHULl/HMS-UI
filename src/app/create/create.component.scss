@@ -1,0 +1,20 @@
+.my-form {
+    border: 0.5px solid grey;
+    border-radius: 1%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 10px;
+    text-align: center;
+    
+    &-input {
+        margin-bottom: 10px;
+    }
+
+    &-button {
+        margin-left: 40%;
+        padding-left: 10%;
+        padding-right: 10%;
+        border-radius: 5%;
+        
+    }
+}
