@@ -22,51 +22,53 @@ export class DisplayComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
-
-  createDoctor() {
-    this.router.navigate(['create/doctor']);
+  ngOnInit() {
+    
   }
 
-  createPatient() {
-    this.router.navigate(['create/patient']);
-  }
+  // createDoctor() {
+  //   this.router.navigate(['create/doctor']);
+  // }
 
-  getDoctors() {
-    this.userService.getDoctors().subscribe(data => {
-      this.users = data;
-    });
-    this.role = 2;
-  }
+  // createPatient() {
+  //   this.router.navigate(['create/patient']);
+  // }
 
-  getPatients() {
-    this.userService.getPatients().subscribe(data => {
-      this.users = data;
-    });
-    this.role = 1;
-  }
+  // getDoctors() {
+  //   this.userService.getDoctors().subscribe(data => {
+  //     this.users = data;
+  //   });
+  //   this.role = 2;
+  // }
 
-  deleteDoctor(userId) {
-    const confirm = prompt(
-      `Are you sure you want to delete doctor with id ${userId} (type: yes (or) no)`
-    );
-    if (confirm.toLowerCase() === 'yes') {
-      this.userService.deleteDoctor(userId).subscribe(data => {
-        console.log(data);
-        this.getDoctors();
-      });
-    }
-  }
+  // getPatients() {
+  //   this.userService.getPatients().subscribe(data => {
+  //     this.users = data;
+  //   });
+  //   this.role = 1;
+  // }
 
-  deletePatient(userId) {
-    const confirm = prompt(
-      `Are you sure you want to delete patient with id ${userId} (type: yes (or) no)`
-    );
-    if (confirm.toLowerCase() === 'yes') {
-      this.userService.deletePatient(userId).subscribe(data => {
-        console.log(data);
-        this.getPatients();
-      });
-    }
-  }
+  // deleteDoctor(userId) {
+  //   const confirm = prompt(
+  //     `Are you sure you want to delete doctor with id ${userId} (type: yes (or) no)`
+  //   );
+  //   if (confirm.toLowerCase() === 'yes') {
+  //     this.userService.deleteDoctor(userId).subscribe(data => {
+  //       console.log(data);
+  //       this.getDoctors();
+  //     });
+  //   }
+  // }
+
+  // deletePatient(userId) {
+  //   const confirm = prompt(
+  //     `Are you sure you want to delete patient with id ${userId} (type: yes (or) no)`
+  //   );
+  //   if (confirm.toLowerCase() === 'yes') {
+  //     this.userService.deletePatient(userId).subscribe(data => {
+  //       console.log(data);
+  //       this.getPatients();
+  //     });
+  //   }
+  // }
 }

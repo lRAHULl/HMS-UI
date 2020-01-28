@@ -1,47 +1,48 @@
-<form style="text-align: center;">
+{{ userUpdateForm.value | json}}
+
+<form style="text-align: center;" [formGroup]="userUpdateForm">
   <br>
   <div class="form-group">
     <label>
-      Username <input type="text" name="username" [(ngModel)]="user.username" class="form-control" disabled>
+      Username <input type="text" formControlName="username" class="form-control" disabled>
     </label>
   </div>
   <div class="form-group">
     <label>
-      Password <input type="text" name="password" [(ngModel)]="user.password" class="form-control">
+      Password <input type="text" formControlName="password" class="form-control">
     </label>
   </div>
   <div class="form-group">
     <label>
-      Age <input type="number" name="age" [(ngModel)]="user.age" class="form-control">
+      Age <input type="number" formControlName="age" class="form-control">
     </label>
   </div>
-  <div *ngIf="user.fkRoleId === 2">
+  <div *ngIf="role === 'doctors' || role === 'doctor'">
     <div class="form-group">
       <label>
-        Specialisation <input type="text" name="specialisation" [(ngModel)]="user.doctorSpecialisation"
+        Specialisation <input type="text" formControlName="doctorSpecialisation"
           class="form-control">
       </label>
     </div>
     <div class="form-group">
       <label>
-        Experience <input type="number" name="experience" [(ngModel)]="user.experience" class="form-control">
+        Experience <input type="number" formControlName="experience" class="form-control">
       </label>
     </div>
     <button (click)="updateDoctor()" class="btn btn-primary">Update</button>
   </div>
-  <div *ngIf="user.fkRoleId === 1">
+  <div *ngIf="role === 'patients' || role === 'patient'">
     <div class="form-group">
       <label>
-        Height <input type="number" name="patientHeight" [(ngModel)]="user.patientHeight" class="form-control">
+        Height <input type="number" formControlName="patientHeight" class="form-control">
       </label>
     </div>
     <div class="form-group">
       <label>
-        Weight <input type="number" name="patientWeight" [(ngModel)]="user.patientWeight" class="form-control">
+        Weight <input type="number" formControlName="patientWeight" class="form-control">
       </label>
     </div>
     <button (click)="updatePatient()" class="btn btn-primary">Update</button>
   </div>
 
-  <p *ngIf="res !== null">{{ res | json }}</p>
 </form>

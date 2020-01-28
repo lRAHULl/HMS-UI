@@ -1,66 +1,134 @@
-<p>{{ user | json }}</p>
+<!-- <p>{{ user | json }}</p> -->
 <div class="my-form" *ngIf="role === 'doctor'">
     <h1>Create Doctor</h1>
     <hr>
-    <form>
+    <form [formGroup]="userForm">
         <div class="row">
             <div class="col-6">
                 <label for="username">Username</label>
-                <input type="text" id="username" [(ngModel)]="user.username" name="username" class="my-form-input form-control">
-                <label for="password">password</label>
-                <input type="password" id="password" [(ngModel)]="user.password" name="password" class="my-form-input form-control">
-                <label for="firstName">firstName</label>
-                <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" class="my-form-input form-control">
-                <label for="lastName">lastName</label>
-                <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" class="my-form-input form-control">
-                <label for="age">age</label>
-                <input type="number" id="age" [(ngModel)]="user.age" name="age" class="my-form-input form-control">
+                <input type="text" id="username" formControlName="username" class="my-form-input form-control">
+                <span *ngIf="username.invalid && username.touched" style="color: red;">Username cannot be empty<br></span>
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" class="my-form-input form-control">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" formControlName="firstName" class="my-form-input form-control">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" formControlName="lastName" class="my-form-input form-control">
+                <label for="age">Age</label>
+                <input type="number" id="age" formControlName="age" class="my-form-input form-control">
             </div>
             <div class="col-6">
-                <label for="doctorSpecialisation">doctorSpecialisation</label>
-                <input type="text" id="doctorSpecialisation" [(ngModel)]="user.doctorSpecialisation" name="doctorSpecialisation" class="my-form-input form-control">
-                <label for="experience">experience</label>
-                <input type="number" id="experience" [(ngModel)]="user.experience" name="experience" class="my-form-input form-control">
+                <label for="doctorSpecialisation">Doctor Specialisation</label>
+                <input type="text" id="doctorSpecialisation" formControlName="doctorSpecialisation" class="my-form-input form-control">
+                <label for="experience">Experience</label>
+                <input type="number" id="experience" formControlName="experience" class="my-form-input form-control">
             </div>
         </div>
-        <button class="btn btn-success" type="submit" (click)="createDoctor()">Create Doctor</button>
+        <button class="btn btn-success" type="submit" (click)="createDoctor()" [disabled]="userForm.invalid">Create Doctor</button>
     </form>
 </div>
 
 <div class="my-form" *ngIf="role === 'patient'">
     <h1>Create Patient</h1>
     <hr>
-    <form>
+    <form [formGroup]="userForm">  
+        <!-- {{ username.errors | json }} -->
         <div class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <label for="username">Username</label>
-                <input type="text" id="username" [(ngModel)]="user.username" name="username" class="my-form-input form-control">
-                <label for="password">password</label>
-                <input type="password" id="password" [(ngModel)]="user.password" name="password" class="my-form-input form-control">
-                <label for="firstName">firstName</label>
-                <input type="text" id="firstName" [(ngModel)]="user.firstName" name="firstName" class="my-form-input form-control">
-                <label for="lastName">lastName</label>
-                <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" class="my-form-input form-control">
-                <label for="age">age</label>
-                <input type="number" id="age" [(ngModel)]="user.age" name="age" class="my-form-input form-control">
-            </div>
-            <div class="col-6">
-                <label for="patientHeight">patientHeight</label>
-                <input type="number" id="patientHeight" [(ngModel)]="user.patientHeight" name="patientHeight" class="my-form-input form-control">
-                <label for="patientWeight">patientWeight</label>
-                <input type="number" id="patientWeight" [(ngModel)]="user.patientWeight" name="patientWeight" class="my-form-input form-control">
-                <label for="street">street</label>
-                <input type="text" id="street" [(ngModel)]="user.street" name="street" class="my-form-input form-control">
-                <label for="city">city</label>
-                <input type="text" id="city" [(ngModel)]="user.city" name="city" class="my-form-input form-control">
-                <label for="doorNo">doorNo</label>
-                <input type="text" id="doorNo" [(ngModel)]="user.doorNo" name="doorNo" class="my-form-input form-control">
-                <label for="bloodGroup">bloodGroup</label>
-                <input type="text" id="bloodGroup" [(ngModel)]="user.bloodGroup" name="bloodGroup" class="my-form-input form-control">
+                <input type="text" id="username" (focusout)="testBlur()" formControlName="username" class="my-form-input form-control" [ngClass]="{
+                    'error': !!username.errors && username.touched,
+                    'is-valid': !username.errors
+                }" required>
+                <span *ngIf="username.errors?.required && username.touched" style="color: red;">
+                    Username is Required <br>
+                </span>
+                <span *ngIf="username.errors?.minlength && username.touched" style="color: red;">
+                    Username is too short.. <br>
+                </span>
+                <span *ngIf="username.touched && username.errors?.maxlength" style="color: red;">
+                    Username is too long.. <br>
+                </span>
+                <!-- <span *ngIf="!username.errors" style="color: green;">
+                    Username looks fine!
+                </span> -->
             </div>
         </div>
-        <button class="btn btn-success" type="submit" (click)="createPatient()">Create Patient</button>
+        <div class="row">
+            <div class="col-6">
+                <!-- {{ password.errors | json }} -->
+                <label for="password">Password</label>
+                <input type="password" id="password" formControlName="password" class="my-form-input form-control"  [ngClass]="{
+                    'error': !!password.errors && password.touched,
+                    'is-valid': !password.errors
+                }">
+                <span *ngIf="password.errors?.required && password.touched" style="color: red;">
+                    Password is Required <br>
+                </span>
+                <span *ngIf="password.errors?.minlength && password.touched" style="color: red;">
+                    Password is too short.. <br>
+                </span>
+                <span *ngIf="password.touched && password.errors?.maxlength" style="color: red;">
+                    Password is too long.. <br>
+                </span>
+                <span *ngIf="!password.errors" style="color: green;">
+                    Password looks fine! <br>
+                </span>
+                <span *ngIf="password.errors?.pattern && password.touched" style="color: red;">
+                    Password must contain an uppercase, lowercase, number <br>
+                </span>
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" formControlName="firstName" class="my-form-input form-control"  [ngClass]="{
+                    'error': !!firstName.errors && firstName.touched,
+                    'is-valid': !firstName.errors
+                }">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" formControlName="lastName" class="my-form-input form-control"  [ngClass]="{
+                    'error': !!lastName.errors && lastName.touched,
+                    'is-valid': !lastName.errors
+                }">
+                <label for="age">Age</label>
+                <input type="number" id="age" formControlName="age" class="my-form-input form-control" [ngClass]="{
+                    'error': !!age.errors && age.touched,
+                    'is-valid': !age.errors
+                }">
+                <label for="bloodGroup">Blood Group</label>
+                <input type="text" id="bloodGroup" formControlName="bloodGroup" class="my-form-input form-control"  [ngClass]="{
+                    'error': !!bloodGroup.errors && bloodGroup.touched,
+                    'is-valid': !bloodGroup.errors
+                }">
+                <span *ngIf="bloodGroup.touched && bloodGroup.invalid" style="color: red;">
+                    Enter the valid Blood Group <br>
+                </span>
+            </div>
+            <div class="col-6">
+                <label for="patientHeight">Patient Height</label>
+                <input type="number" id="patientHeight" formControlName="patientHeight" class="my-form-input form-control" [ngClass]="{
+                    'error': !!patientHeight.errors && patientHeight.touched,
+                    'is-valid': !patientHeight.errors
+                }">
+                <label for="patientWeight">Patient Weight</label>
+                <input type="number" id="patientWeight" formControlName="patientWeight" class="my-form-input form-control" [ngClass]="{
+                    'error': !!patientWeight.errors && patientWeight.touched,
+                    'is-valid': !patientWeight.errors
+                }">
+                <label for="street">Street</label>
+                <input type="text" id="street" formControlName="street" class="my-form-input form-control" [ngClass]="{
+                    'error': !!street.errors && street.touched,
+                    'is-valid': !street.errors
+                }">
+                <label for="city">City</label>
+                <input type="text" id="city" formControlName="city" class="my-form-input form-control" [ngClass]="{
+                    'error': !!city.errors && city.touched,
+                    'is-valid': !city.errors
+                }">
+                <label for="doorNo">Door No</label>
+                <input type="text" id="doorNo" formControlName="doorNo" class="my-form-input form-control" [ngClass]="{
+                    'error': !!doorNo.errors && doorNo.touched,
+                    'is-valid': !doorNo.errors
+                }">
+            </div>
+        </div>
+        <button class="btn btn-success" type="submit" (click)="createPatient()" [disabled]="userForm.invalid">Create Patient</button>
     </form>
 </div>
-
-{{ res | json }}

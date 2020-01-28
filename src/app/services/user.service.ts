@@ -31,27 +31,27 @@ export class UserService {
   }
 
   createDoctor(doctor: Doctor): Observable<any> {
-    return this.http.post<any>(this.DOCTORS_URL, doctor);
+    return this.http.post<Doctor>(this.DOCTORS_URL, doctor);
   }
 
   createPatient(patient: Patient): Observable<any> {
-    return this.http.post<any>(this.PATIENTS_URL, patient);
+    return this.http.post<Patient>(this.PATIENTS_URL, patient);
   }
 
   getDoctors(): Observable<Array<Doctor>> {
     return this.http.get<Array<Doctor>>(this.DOCTORS_URL);
   }
 
-  getPatients() {
-    return this.http.get(this.PATIENTS_URL);
+  getPatients(): Observable<Array<Patient>> {
+    return this.http.get<Array<Patient>>(this.PATIENTS_URL);
   }
 
   getDoctorById(id: string): Observable<Doctor> {
     return this.http.get<Doctor>(this.DOCTORS_URL + id);
   }
 
-  getPatientById(id: string): Observable<Doctor> {
-    return this.http.get<any>(this.PATIENTS_URL + id);
+  getPatientById(id: string): Observable<Patient> {
+    return this.http.get<Patient>(this.PATIENTS_URL + id);
   }
 
   updateDoctor(doctor: Doctor): Observable<any> {

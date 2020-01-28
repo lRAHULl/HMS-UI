@@ -1,0 +1,42 @@
+<div class="dashboard fluid-container">
+    <table class="table table-striped table-bordered table-hover mt-3">
+        <thead *ngIf="!!doctors">
+            <th>S.No</th>
+            <th>Username</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Specilization</th>
+            <th>Experience</th>
+            <th>Actions</th>
+        </thead>
+        <!-- <app-user *ngFor="let user of users" [user]="user"></app-user> -->
+        <tbody>
+            <tr *ngFor="let user of doctors; let i=index">
+                <td>{{ i+1 }}</td>
+                <td>{{ user.username }} <a routerLink="{{ user.pkUserId }}"> <i class="fas fa-eye"> </i> </a></td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.doctorSpecialisation }}</td>
+                <td>{{ user.experience }}</td>
+                <td>
+                    <button 
+                        class="btn btn-warning text-white" 
+                        routerLink="/display/doctors/{{ user.pkUserId }}/update">
+                        <i class="far fa-edit" ></i>
+                    </button>
+                    &nbsp;
+                    <button 
+                        class="btn btn-danger text-white" 
+                        (click)="deleteDoctor(user.pkUserId)">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button 
+        class="btn btn-success" 
+        (click)="createDoctor()">
+        Add Doctor
+    </button>
+</div> 

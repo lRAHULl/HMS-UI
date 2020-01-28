@@ -8,7 +8,7 @@ import { LoginService } from './services/login.service';
 })
 export class SecureGuard implements CanActivate {
 
-  constructor(private loginService: LoginService){}
+  constructor(private loginService: LoginService) {}
 
   status: boolean = this.loginService.isLoggedIn();
 

@@ -1,0 +1,10 @@
+<form [formGroup]="myForm">
+    <input type="text" formControlName="username" placeholder="name" required>
+    <input type="text" formControlName="password" placeholder="password" required>
+    <input type="text" formControlName="firstName" placeholder="firstName" required>
+    <input type="text" formControlName="lastName" placeholder="lastName" required>
+    <input type="number" formControlName="age" placeholder="age" required>
+    <input type="text" formControlName="doctorSpecialisation" placeholder="doctorSpecialisation" required>
+    <input type="number" formControlName="experience" placeholder="experience" required>
+    <button type="submit" [disabled]="myForm.invalid" (click)="submit()">Submit</button>
+</form>

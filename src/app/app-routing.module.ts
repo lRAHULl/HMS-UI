@@ -6,6 +6,10 @@ import { UpdateComponent } from './display/update/update.component';
 import { UserComponent } from './display/user/user.component';
 import { SecureGuard } from './secure.guard';
 import { CreateComponent } from './create/create.component';
+import { SampleFormComponent } from './sample-form/sample-form.component';
+import { ParentComponent } from './play/parent/parent.component';
+import { DoctorsComponent } from './display/doctors/doctors.component';
+import { PatientsComponent } from './display/patients/patients.component';
 
 
 const routes: Routes = [
@@ -13,11 +17,16 @@ const routes: Routes = [
   {
     path: 'display',
     component: DisplayComponent,
-    canActivate: [SecureGuard]
+    // canActivate: [SecureGuard],
+    children: [
+      {path: 'doctors', component: DoctorsComponent},
+      {path: 'patients', component: PatientsComponent}
+    ]
   },
-  {path: 'display/:id/update', component: UpdateComponent, canActivate: [SecureGuard]},
-  {path: 'display/:id', component: UserComponent, canActivate: [SecureGuard]},
-  {path: 'create/:role', component: CreateComponent}
+  {path: 'play', component: ParentComponent},
+  {path: 'display/:role/:id/update', component: UpdateComponent, canActivate: [SecureGuard]},
+  {path: 'display/:role/:id', component: UserComponent, canActivate: [SecureGuard]},
+  {path: 'create/:role', component: CreateComponent},
 ];
 
 @NgModule({
