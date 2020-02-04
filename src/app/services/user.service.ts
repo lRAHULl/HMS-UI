@@ -11,8 +11,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  DOCTORS_URL = 'http://localhost:8080/doctors/';
-  PATIENTS_URL = 'http://localhost:8080/patients/';
+  DOCTORS_URL = 'http://hmsv3.us-east-1.elasticbeanstalk.com:8080//doctors/';
+  PATIENTS_URL = 'http://hmsv3.us-east-1.elasticbeanstalk.com:8080//patients/';
 
   private _listOfDoctor: Array<any> = [{ name: 'Ashok', data: 'Opthamologist' }, { name: 'Swetha', data: 'Dentist' }];
   private _listOfPatient: Array<any> = [{ name: 'Rahul', data: 'Cold' }, { name: 'Kishore', data: 'Fever' }];

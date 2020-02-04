@@ -13,6 +13,8 @@ export class DoctorsComponent implements OnInit {
 
   doctors: Doctor[];
 
+  text = 'Add Doctor';
+
   constructor(
     private userService: UserService,
     private router: Router

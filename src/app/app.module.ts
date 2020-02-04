@@ -11,7 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { DisplayComponent } from './display/display.component';
 import { UserComponent } from './display/user/user.component';
 import { UpdateComponent } from './display/update/update.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateComponent } from './create/create.component';
 import { SampleFormComponent } from './sample-form/sample-form.component';
 import { BulkCreateComponent } from './bulk-create/bulk-create.component';
@@ -21,6 +20,9 @@ import { ChildComponent } from './play/child/child.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { DoctorsComponent } from './display/doctors/doctors.component';
 import { PatientsComponent } from './display/patients/patients.component';
+import { SharedModule } from './shared/shared.module';
+import { Sib1Component } from './play/sib1/sib1.component';
+import { Sib2Component } from './play/sib2/sib2.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { PatientsComponent } from './display/patients/patients.component';
     ChildComponent,
     DoctorsComponent,
     PatientsComponent,
+    Sib1Component,
+    Sib2Component,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { PatientsComponent } from './display/patients/patients.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    SharedModule,
   ],
   providers: [
     {

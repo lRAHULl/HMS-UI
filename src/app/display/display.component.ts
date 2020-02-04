@@ -17,9 +17,7 @@ export class DisplayComponent implements OnInit {
   password: string = this.loginService.password;
 
   constructor(
-    private loginService: LoginService,
-    private userService: UserService,
-    private router: Router
+    public loginService: LoginService,
   ) {}
 
   ngOnInit() {

@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'display',
     component: DisplayComponent,
-    // canActivate: [SecureGuard],
+    canActivate: [SecureGuard],
     children: [
       {path: 'doctors', component: DoctorsComponent},
       {path: 'patients', component: PatientsComponent}

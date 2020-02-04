@@ -1,4 +1,8 @@
-<h1>Parent</h1>
-<h2>From Child {{ eventMessage }}</h2>
-<input type="text" [(ngModel)]="message">
-<app-child [message]="message" (emitter)="recieve($event)"></app-child>
+<div class="row">
+    <div class="col-6">
+        <app-sib1></app-sib1>
+    </div>
+    <div class="col-6">
+        <app-sib2></app-sib2>
+    </div>
+</div>
